@@ -112,7 +112,7 @@ class LoginPageState extends State<LoginPage> {
               controller.isPasswordVisible
                   ? Icons.visibility
                   : Icons.visibility_off,
-              color: Colors.black,
+              color: AppColors.primary,
             );
           }),
         ),

@@ -1,3 +1,4 @@
+import 'package:estatisticas_covid/shared/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTextField extends StatelessWidget {
@@ -22,7 +23,7 @@ class AppTextField extends StatelessWidget {
         fillColor: Colors.white,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.black),
+          borderSide: BorderSide(color: AppColors.primary),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -30,17 +31,17 @@ class AppTextField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.black),
+          borderSide: BorderSide(color: AppColors.primary),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Colors.black),
+          borderSide: BorderSide(color: AppColors.primary),
         ),
         iconColor: Colors.black,
         suffixIconColor: Colors.black,
         focusColor: Colors.black,
         label: Text(label),
-        labelStyle: const TextStyle(color: Colors.black),
+        labelStyle: TextStyle(color: AppColors.primary),
         isDense: true,
         filled: true,
         suffixIcon: suffixWidget,

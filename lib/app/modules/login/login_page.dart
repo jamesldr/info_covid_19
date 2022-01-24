@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:estatisticas_covid/shared/constants/app_colors.dart';
 import 'package:estatisticas_covid/shared/widgets/app_elevated_button.dart';
 import 'package:flutter/material.dart';

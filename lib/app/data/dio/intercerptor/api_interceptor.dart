@@ -15,8 +15,9 @@ class ApiInterceptors extends Interceptor {
   }
 
   @override
-  Future<dynamic> onError(
-      DioError err, ErrorInterceptorHandler handler) async {}
+  Future<dynamic> onError(DioError err, ErrorInterceptorHandler handler) async {
+    logger(err.message);
+  }
 
   @override
   Future<dynamic> onResponse(

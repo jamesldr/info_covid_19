@@ -22,11 +22,20 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: AppImages.icon,
+        centerTitle: true,
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: kToolbarHeight,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: AppImages.icon,
+              ),
+            ),
+            const Text('INFO COVID-19'),
+          ],
         ),
-        title: const Text('INFO COVID-19'),
         backgroundColor: AppColors.primary,
       ),
       body: _buildBody(),

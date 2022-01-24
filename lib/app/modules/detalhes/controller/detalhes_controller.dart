@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:estatisticas_covid/app/data/dio/api_brasil.dart';
 import 'package:estatisticas_covid/app/data/repositories/covid_data_repository.dart';
 import 'package:estatisticas_covid/shared/entities/graph_model.dart';

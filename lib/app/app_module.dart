@@ -1,3 +1,4 @@
+import 'package:estatisticas_covid/app/modules/detalhes/detalhes_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:estatisticas_covid/shared/constants/app_routes.dart';
@@ -16,5 +17,6 @@ class AppModule extends Module {
   final List<ModularRoute> routes = [
     ModuleRoute(Modular.initialRoute, module: LoginModule()),
     ModuleRoute(AppRoutes.home, module: HomeModule()),
+    ModuleRoute(AppRoutes.detalhes, module: DetalhesModule()),
   ];
 }

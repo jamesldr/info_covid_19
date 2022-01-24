@@ -1,8 +1,10 @@
-import 'package:estatisticas_covid/app/data/dio/client.dart';
-import 'package:estatisticas_covid/app/data/repositories/covid_data_repository.dart';
+import 'package:estatisticas_covid/shared/app_assets/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import 'package:estatisticas_covid/shared/constants/app_colors.dart';
+import 'package:estatisticas_covid/shared/widgets/home/estado_item_widget.dart';
 
 import 'controller/home_controller.dart';
 
@@ -16,30 +18,46 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
-  void initState() {
-    final client = DioClient().init();
-
-    Future.microtask(
-      () async => await CovidDataRepository(client).fetchData(),
-    );
-
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: const Text('Counter'),
+        leading: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: AppImages.icon,
+        ),
+        title: const Text('INFO COVID-19'),
+        backgroundColor: AppColors.primary,
       ),
-      body: Observer(
-        builder: (context) => Text('${store.counter}'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          store.increment();
-        },
-        child: const Icon(Icons.add),
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
+    return SafeArea(
+      child: Scrollbar(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Observer(builder: (_) {
+                  return ListView.builder(
+                    itemCount: controller.estados?.length ?? 0,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (_, i) {
+                      return EstadoItemWidget(
+                        model: controller.estados![i],
+                      );
+                    },
+                  );
+                })
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

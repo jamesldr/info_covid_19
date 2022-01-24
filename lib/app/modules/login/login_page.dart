@@ -22,7 +22,7 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.primary.withOpacity(0.4),
       body: _buildBody(),
     );
   }
@@ -69,23 +69,12 @@ class LoginPageState extends State<LoginPage> {
 
   Widget _buildImage() {
     return Padding(
-      padding: const EdgeInsets.all(32.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
           SizedBox(
             height: 200,
             child: AppImages.logo,
-          ),
-          const SizedBox(height: 16),
-          const AutoSizeText(
-            'Estatísticas COVID',
-            maxLines: 1,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 32,
-            ),
           ),
         ],
       ),

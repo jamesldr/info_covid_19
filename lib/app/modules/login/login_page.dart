@@ -111,8 +111,9 @@ class LoginPageState extends State<LoginPage> {
   Widget _buildLoginButton() {
     return Observer(builder: (_) {
       return AppElevatedButton(
-        onPressed: () =>
-            controller.isLoginAvaliable ? controller.login(context) : null,
+        onPressed: controller.isLoginAvaliable
+            ? () => controller.login(context)
+            : null,
         child: controller.loading
             ? const Padding(
                 padding: EdgeInsets.all(8.0),

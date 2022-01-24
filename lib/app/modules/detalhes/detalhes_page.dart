@@ -1,9 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:estatisticas_covid/shared/app_assets/app_images.dart';
-import 'package:estatisticas_covid/shared/widgets/detalhes/status_grafico.dart';
+import 'package:estatisticas_covid/shared/widgets/detalhes/status_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import 'package:estatisticas_covid/shared/app_assets/app_images.dart';
+import 'package:estatisticas_covid/shared/widgets/detalhes/status_grafico.dart';
 
 import '../../../shared/constants/app_colors.dart';
 import '../../data/models/estado_model.dart';
@@ -154,65 +156,11 @@ class DetalhesPageState extends State<DetalhesPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Populaçao Estimada: ',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Observer(
-                        builder: (_) {
-                          return Text(
-                            (store.population ?? ''),
-                            style: const TextStyle(),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                  _buildPopulationRow(),
                   const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Casos Confirmados: ',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Observer(
-                        builder: (_) {
-                          return Text(
-                            store.confirmed ?? '',
-                            style: const TextStyle(),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                  _buildConfirmedRow(),
                   const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Mortes: ',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Observer(
-                        builder: (_) {
-                          return Text(
-                            store.deaths ?? '',
-                            style: const TextStyle(),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                  _buildDeathsRow(),
                 ],
               ),
             ),
@@ -220,6 +168,24 @@ class DetalhesPageState extends State<DetalhesPage> {
         ),
       ),
     );
+  }
+
+  Widget _buildDeathsRow() {
+    return Observer(builder: (_) {
+      return StatusRow(label: 'Mortes', value: store.deaths);
+    });
+  }
+
+  Widget _buildConfirmedRow() {
+    return Observer(builder: (_) {
+      return StatusRow(label: 'Casos Confirmados', value: store.confirmed);
+    });
+  }
+
+  Widget _buildPopulationRow() {
+    return Observer(builder: (_) {
+      return StatusRow(label: 'Populaçao Estimada', value: store.population);
+    });
   }
 
   _buildGraficos(BuildContext context) {

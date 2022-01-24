@@ -3,7 +3,6 @@ import 'package:estatisticas_covid/shared/constants/app_routes.dart';
 import 'package:estatisticas_covid/shared/entities/user_credentials.dart';
 import 'package:estatisticas_covid/shared/utils/debug_logger.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 part 'login_controller.g.dart';

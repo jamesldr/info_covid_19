@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:estatisticas_covid/shared/utils/formatter.dart';
 
 import '../models/data_model.dart';
 

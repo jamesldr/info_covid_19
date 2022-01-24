@@ -4,7 +4,6 @@ import 'package:estatisticas_covid/shared/widgets/detalhes/status_grafico.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
 
 import '../../../shared/constants/app_colors.dart';
 import '../../data/models/estado_model.dart';
@@ -36,13 +35,15 @@ class DetalhesPageState extends State<DetalhesPage> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: AppColors.primary,
         title: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
               height: kToolbarHeight,
               child: Padding(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(8.0),
                 child: AppImages.icon,
               ),
             ),

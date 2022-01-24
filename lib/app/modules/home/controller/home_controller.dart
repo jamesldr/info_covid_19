@@ -27,6 +27,5 @@ abstract class _HomeControllerBase with Store {
     _setState(HomeState.loading);
     estados = (await _repository.fetchEstados()).asObservable();
     _setState(HomeState.done);
-    _setState(HomeState.initial);
   }
 }

@@ -44,17 +44,16 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
 
   Widget _buildBody() {
     return SafeArea(
-      child: Scrollbar(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Observer(builder: (_) {
-                  if (controller.estados?.length != null &&
-                      (controller.estados?.length ?? 0) > 0) {
-                    return ListView.builder(
+      child: Observer(builder: (_) {
+        if (controller.state != HomeState.loading) {
+          return Scrollbar(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ListView.builder(
                       itemCount: controller.estados?.length ?? 0,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -63,17 +62,17 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                           model: controller.estados![i],
                         );
                       },
-                    );
-                  }
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                })
-              ],
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
-      ),
+          );
+        }
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }),
     );
   }
 }

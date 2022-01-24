@@ -34,10 +34,12 @@ abstract class _DetalhesControllerBase with Store {
 
   @action
   populate({required String sigla}) async {
+    state = DetalhesState.loading;
     final _client = ApiBrasil().init();
     final _repository = CovidDataRepository(_client);
     await _populateStatus(_repository, sigla);
     await _populateGraphs(_repository, sigla);
+    state = DetalhesState.done;
   }
 
   _populateStatus(CovidDataRepository repo, String sigla) async {

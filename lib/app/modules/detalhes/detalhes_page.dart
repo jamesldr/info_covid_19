@@ -52,18 +52,26 @@ class DetalhesPageState extends State<DetalhesPage> {
         ),
       ),
       body: SafeArea(
-        child: Scrollbar(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                _buildBandeira(context),
-                _buildDataAtualizacao(context),
-                _buildStatus(context),
-                _buildGraficos(context),
-              ],
-            ),
-          ),
-        ),
+        child: Observer(builder: (_) {
+          return store.state == DetalhesState.done
+              ? Scrollbar(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        _buildBandeira(context),
+                        _buildDataAtualizacao(context),
+                        _buildStatus(context),
+                        _buildGraficos(context),
+                      ],
+                    ),
+                  ),
+                )
+              : Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.primary,
+                  ),
+                );
+        }),
       ),
     );
   }
@@ -134,7 +142,7 @@ class DetalhesPageState extends State<DetalhesPage> {
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
-                'Status',
+                'Status (total)',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,

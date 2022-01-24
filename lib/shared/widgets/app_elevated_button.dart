@@ -1,3 +1,4 @@
+import 'package:estatisticas_covid/shared/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppElevatedButton extends StatelessWidget {
@@ -19,7 +20,7 @@ class AppElevatedButton extends StatelessWidget {
         child: child,
         style: ButtonStyle(
           backgroundColor: onPressed != null
-              ? MaterialStateProperty.all(Colors.black)
+              ? MaterialStateProperty.all(AppColors.primary)
               : MaterialStateProperty.all(Colors.grey),
           foregroundColor: MaterialStateProperty.all(Colors.white),
         ),

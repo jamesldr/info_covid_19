@@ -43,15 +43,21 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Observer(builder: (_) {
-                  return ListView.builder(
-                    itemCount: controller.estados?.length ?? 0,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (_, i) {
-                      return EstadoItemWidget(
-                        model: controller.estados![i],
-                      );
-                    },
+                  if (controller.estados?.length != null &&
+                      (controller.estados?.length ?? 0) > 0) {
+                    return ListView.builder(
+                      itemCount: controller.estados?.length ?? 0,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (_, i) {
+                        return EstadoItemWidget(
+                          model: controller.estados![i],
+                        );
+                      },
+                    );
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
                   );
                 })
               ],
